@@ -9,7 +9,7 @@
 
 ### Technologies Used
 
-This project is using Node.JS v14.1.0, and Jest v26.6.3.
+This project is using Node.JS v14.1.0, request-promise, supertest (to make HTTP requests to the API), and Jest v26.6.3.
 
 ### Setup
 
@@ -27,8 +27,7 @@ Run the command `npm install` to install the required dependencies.
 - The API returns `access-control-allow-origin: *`. While this is fine for testing, this needs to be limited to specific, trusted sources in production
 - The endpoint for "Create or Modify a Key-Value Pair" returns with status code `200` when ID and Key are provided, but no body. The response
 - The documentation also says that the success response status code should be 201, but it is actually 200. This needs to be corrected
-in either the API or the docs.
-also is `{"error":"error"}`. In this case, better input validation could be used on the API enpoint to ensure that the request
+in either the API or the docs. The response is `{"error":"error"}`. In this case, better input validation could be used on the API enpoint to ensure that the request
 contains a valid JSON body to update the key with. This was also not mentioned in the API docs, so those should be updated as well.
 - Some tests depend on other operations to be performed prior to the test being run (ie. A dictionary must be created before it can be deleted).
 This means that if the tests are not properly structured, you end up with test cases that are dependent on other test cases, which is not a sound approach.
