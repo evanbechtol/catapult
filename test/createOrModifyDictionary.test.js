@@ -38,8 +38,6 @@ describe( "Create or Modify /dictionary", () => {
     const uri = `${endpoint}/${dictionaryId}/keys/${key}`;
     const qs = { id: dictionaryId, key: "test" };
 
-    console.log( `${baseURL}${uri}` );
-
     request( baseURL )
       .post( uri )
       .query( qs )
