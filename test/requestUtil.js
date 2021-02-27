@@ -42,8 +42,7 @@ async function removeDictionary ( endpoint, id ) {
   options.method = "DELETE";
 
   try {
-    const results = await request( options );
-    return JSON.parse( results ).id;
+    return await request( options );
   } catch ( err ) {
     throw err;
   }
