@@ -19,7 +19,7 @@ Run the command `npm install` to install the required dependencies.
 
 *This API requires an Authorization header on all requests*. If you do not have the authorization key, you cannot run these tests.
 1. Set your environment variables in the command line: `set baseUrl=https://dictionaryapi.docs.apiary.io/`, and `authKey=<your authorization token>`
-2. Type `jest` in the Command line, to run the tests
+2. Type `jest` in the Command line to run the tests
 
 ### Notes from testing
 
