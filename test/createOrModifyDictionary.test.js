@@ -24,15 +24,13 @@ afterAll( done => {
   removeDictionary( endpoint, dictionaryId )
     .then( () => {
       console.info( "Dictionary delete successful" );
-      done();
     } )
     .catch( err => {
       console.error( err );
-      done();
     } )
-    .finally(() => {
-
-    });
+    .finally( () => {
+      done();
+    } );
 } );
 
 describe( "Create or Modify /dictionary", () => {
