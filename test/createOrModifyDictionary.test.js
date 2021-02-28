@@ -10,10 +10,11 @@ beforeAll( done => {
     .then( id => {
       dictionaryId = id;
       console.info( "Dictionary create successful" );
-      done();
     } )
     .catch( err => {
       console.error( err );
+    } )
+    .finally( () => {
       done();
     } );
 } );
@@ -28,7 +29,10 @@ afterAll( done => {
     .catch( err => {
       console.error( err );
       done();
-    } );
+    } )
+    .finally(() => {
+
+    });
 } );
 
 describe( "Create or Modify /dictionary", () => {

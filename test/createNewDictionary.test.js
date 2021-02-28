@@ -9,10 +9,11 @@ afterAll( done => {
   removeDictionary( endpoint, dictionaryId )
     .then( () => {
       console.info( "Dictionary delete successful" );
-      done();
     } )
     .catch( err => {
       console.error( err );
+    } )
+    .finally( () => {
       done();
     } );
 } );
