@@ -29,6 +29,29 @@ async function createDictionary ( endpoint ) {
 }
 
 /**
+ * @description Utility to create a dictionary
+ * @param endpoint {string} API Endpoint to use
+ * @param id {string} ID of dictionary to retrieve keys for
+ * @param key {string} Key to retrieve value for
+ * @returns Returns the value for the provided key, or null if not found
+ */
+async function getValueForKey ( endpoint, id, key ) {
+  if ( !id ) {
+    throw "Valid Id is required";
+  }
+
+  options.url = `${baseURL}/${endpoint}/${id}/keys/${key}`;
+  options.method = "GET";
+
+  try {
+    const results = await request( options );
+    return JSON.parse( results );
+  } catch ( err ) {
+    throw err;
+  }
+}
+
+/**
  * @description Utility to remove a created dictionary once testing is complete
  * @param endpoint {string} API Endpoint to use
  * @param id {string} ID for dictionary to delete
@@ -38,7 +61,7 @@ async function removeDictionary ( endpoint, id ) {
     throw "Valid Id is required";
   }
 
-  options.url = `${baseURL}/${endpoint}${id}/?${id}`;
+  options.url = `${baseURL}/${endpoint}/${id}/?${id}`;
   options.method = "DELETE";
 
   try {
@@ -48,4 +71,4 @@ async function removeDictionary ( endpoint, id ) {
   }
 }
 
-module.exports = { createDictionary, removeDictionary };
+module.exports = { createDictionary, getValueForKey, removeDictionary };
