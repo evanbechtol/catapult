@@ -29,7 +29,7 @@ async function createDictionary ( endpoint ) {
 }
 
 /**
- * @description Utility to create a dictionary
+ * @description Utility to retrieve a specific key-value pair for a dictionary
  * @param endpoint {string} API Endpoint to use
  * @param id {string} ID of dictionary to retrieve keys for
  * @param key {string} Key to retrieve value for
