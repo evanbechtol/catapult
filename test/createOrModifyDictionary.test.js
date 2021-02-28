@@ -33,6 +33,8 @@ afterAll( done => {
 
 describe( "Create or Modify /dictionary", () => {
   it( "Should return 200 with valid Id, Key, and Body", done => {
+    // Generate a new value each time to verify that the key-value pair is
+    // actually being updated
     const body = { "value": randomNumber() };
     const key = "test";
     const uri = `${endpoint}/${dictionaryId}/keys/${key}`;
@@ -52,7 +54,7 @@ describe( "Create or Modify /dictionary", () => {
 
         getValueForKey( endpoint, dictionaryId, key )
           .then( result => {
-            expect(result).toHaveProperty("value");
+            expect( result ).toHaveProperty( "value" );
             expect( result.value ).toEqual( body.value );
             done();
           } )
