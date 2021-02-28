@@ -1,6 +1,6 @@
 const { baseURL, authKey } = require( "../config" );
 const request = require( "supertest" );
-const { createDictionary, removeDictionary } = require( "./requestUtil" );
+const { createDictionary, getValueForKey, randomNumber, removeDictionary } = require( "./requestUtil" );
 const endpoint = "/dictionary";
 let dictionaryId;
 
@@ -33,7 +33,7 @@ afterAll( done => {
 
 describe( "Create or Modify /dictionary", () => {
   it( "Should return 200 with valid Id, Key, and Body", done => {
-    const body = { "value": "Value" };
+    const body = { "value": randomNumber() };
     const key = "test";
     const uri = `${endpoint}/${dictionaryId}/keys/${key}`;
     const qs = { id: dictionaryId, key: "test" };
@@ -50,7 +50,16 @@ describe( "Create or Modify /dictionary", () => {
           return done( err );
         }
 
-        done();
+        getValueForKey( endpoint, dictionaryId, key )
+          .then( result => {
+            expect(result).toHaveProperty("value");
+            expect( result.value ).toEqual( body.value );
+            done();
+          } )
+          .catch( err => {
+            console.error( err );
+            done();
+          } );
       } );
   } );
 } );
