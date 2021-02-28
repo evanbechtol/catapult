@@ -52,6 +52,7 @@ describe( "Create or Modify /dictionary", () => {
           return done( err );
         }
 
+        // Check to make sure that the key-value pair is updated as expected
         getValueForKey( endpoint, dictionaryId, key )
           .then( result => {
             expect( result ).toHaveProperty( "value" );
