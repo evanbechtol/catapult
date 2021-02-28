@@ -40,7 +40,7 @@ async function getValueForKey ( endpoint, id, key ) {
     throw "Valid Id is required";
   }
 
-  options.url = `${baseURL}/${endpoint}/${id}/keys/${key}`;
+  options.url = `${baseURL}${endpoint}/${id}/keys/${key}`;
   options.method = "GET";
 
   try {
@@ -61,7 +61,7 @@ async function removeDictionary ( endpoint, id ) {
     throw "Valid Id is required";
   }
 
-  options.url = `${baseURL}/${endpoint}/${id}/?${id}`;
+  options.url = `${baseURL}${endpoint}/${id}?id=${id}`;
   options.method = "DELETE";
 
   try {
