@@ -59,10 +59,11 @@ describe( "Create or Modify /dictionary", () => {
           .then( result => {
             expect( result ).toHaveProperty( "value" );
             expect( result.value ).toEqual( body.value );
-            done();
           } )
           .catch( err => {
             console.error( err );
+          } )
+          .finally( () => {
             done();
           } );
       } );
