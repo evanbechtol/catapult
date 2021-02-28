@@ -29,7 +29,8 @@ Run the command `npm install` to install the required dependencies.
 - The API returns the header `x-powered-by`. This header can be used to exploit your system by identifying CVE's (common vulnerabilities and exposures).
 - The API returns `access-control-allow-origin: *`. While this is fine for testing, this needs to be limited to specific, trusted sources in production.
 - The endpoint for "Create or Modify a Key-Value Pair" returns with status code `200` when ID and Key are provided, but no body.
-- The documentation also says that the success response status code should be 201, but it is actually 200. This needs to be corrected
+- The documentation also says that the success response status code should be 201, but it is actually 200. This needs to be corrected.
+- It would be helpful for the "Create or Modify a Key-Value Pair" endpoint to return the updated dictionary with the key-value pairs.
 in either the API or the docs. In this case, better input validation could be used on the API endpoint to ensure that the request
 contains a valid JSON body to update the key with. This was also not mentioned in the API docs, so those should be updated as well.
 - Some tests depend on other operations to be performed prior to the test being run (ie. A dictionary must be created before it can be deleted).
